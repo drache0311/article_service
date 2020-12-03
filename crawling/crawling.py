@@ -47,21 +47,22 @@ def crwallNews():
         if 'href' in i.attrs:
                 plain_title = i.get_text().replace("\t", "").replace("\n", "")
                 plain_href = 'https://www.reuters.com/news/world' + str(i.attrs['href'])
-
+                
                 # 본문 크롤링
-                bsObject = BeautifulSoup(html, "html.parser") 
+                bsObject = BeautifulSoup(plain_href, "html.parser") 
                 body = bsObject.find_all('p','ArticleBody-para-TD_9x')
                 bodyText=[] # 본문
                 for i in body:
                     bodyText.append(i)
                 bodyText = str(bodyText)
+                
                 bodyText = re.sub('<.+?>', '', bodyText, 0, re.I|re.S)  # 태그 제거
                 # 키워드 추출 문
                 r.extract_keywords_from_text(bodyText)  # 본문의 키워드 추출
                 words = r.get_ranked_phrases() 
                 keyword.append(''.join(keywords(words[0:3]).split('\n')))  # 총 3개 키워드 삽입
                 
-
+                
                 #   summary.append(이거 요약) 요약문인가? 이거 어캐쓰는거임
                 href.append(plain_href)
                 title.append(plain_title)
