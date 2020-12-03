@@ -1,15 +1,43 @@
 <!DOCTYPE html>
+<!-- 네비게이션 만들기 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  
+  <!-- 리스트 : 부트스트랩은 모바일 우선이라 화면이 작으면 아래로 쌓아서 내려온다 -->
+  <ul class="navbar-nav mr-auto navbar-dark">
+      <li class="nav-item mr-auto active">
+          <a class="nav-link" href="">NewsTalk</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">button 2</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link disabled" href="#">button 3</a>
+      </li> 
+  </ul>
+  <!-- Search -->
+  <form class="form-inline" action=""> 
+       <!-- inline여야 간격이 없이 메뉴처럼 나온다-->
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <!-- form-control 입력창 꾸며주는 클래스 -->
+      <button class="btn btn-success"  type="submit">Search</button>
+  </form>
+</nav>
+
+
+<!-- 네비게이션 만들기 -->
+
 <html lang ="utf-8">
 <head>
 <meta charset = "utf-8">
 <meta name="viewport" content"width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Blog</title>
 </head>
 <body>
 <div class = "container">
+  <img src="ant_main.png" class="mx-auto d-block"/>
 <h1 class = "mb-4"> Blog Articles </h1>
 <a href = "/articles/new" class="btn btn-success"> New Article </a>
 <% articles.forEach(article => { %>
@@ -31,4 +59,3 @@
 </div>
 </body>
 </html>
-
