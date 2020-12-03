@@ -14,20 +14,5 @@ router.get('/:id', async(req, res) => {
   res.render('articles/show' , {article : article}) 
 })
 
-function saveArticleAndRedirect(path) {
-  return async (req, res) => {
-    let article = req.article
-    article.title = req.body.title
-    article.title_kor = req.body.title_kor
-    article.href = req.body.href
-    article.upload_day = req.body.upload_day
-    try {
-      article = await article.save()
-      res.redirect(`/articles/${article.slug}`)
-    } catch (e) {
-      res.render(`articles/${path}`, { article: article })
-    }
-  }
-}
 
 module.exports = router
