@@ -3,8 +3,9 @@ const mongoose = require('mongoose')
 const articleRouter = require('./routes/articles')
 const Article = require('./models/article')  //article 모델
 const { post } = require('./routes/articles')
+var util = require('./util');
 const app = express()
-var util = require('util')
+
 
 mongoose.connect('mongodb://developer:developer@207.148.99.250:27017/article_service', {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
@@ -20,19 +21,19 @@ app.get('/', async (req, res) => {
     res.render('articles/index', { articles: articles })
 })
 
-
-
+// searchQuery <<<
 function createSearchQuery(queries){ // 4
   var searchQuery = {};
-  if( queries.searchText && queries.searchText.length >= 2){
-    var articlesQueries = [];
-      postQueries.push({ title_kor: { $regex: new RegExp(queries.searchText, 'i') } });
-    if(articlesQueries.length > 0) searchQuery = {$or:articlesQueries};
+  if(queries.searchText && queries.searchText.length >= 3){
+    var postQueries = [];
+      postQueries.push({ body: { $regex: new RegExp(queries.searchText, 'i') } });
+    if(postQueries.length > 0) searchQuery = {$or:postQueries};
   }
   return searchQuery;
 }
 
-app.use('/articles', articleRouter)
+// Routers
+app.use('/articles',util.getPostQueryString, articleRouter)
 
 app.listen(3000)
 

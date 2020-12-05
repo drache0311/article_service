@@ -17,7 +17,7 @@
   <!-- Search -->
   <form class="form-inline" action="/articles" method="get" class="post-index-tool"> 
        <!-- inline여야 간격이 없이 메뉴처럼 나온다-->
-<input class="form-control mr-sm-2" type="text" name="Search"   placeholder="Search" >
+    <input class="form-control mr-sm-2" type="text" name="searchText" placeholder="Search" >
       <!-- form-control 입력창 꾸며주는 클래스 -->
       <button class="btn btn-success"  type="submit">Search</button>
   </form>
@@ -28,6 +28,7 @@
 
 <html lang ="utf-8">
 <head>
+<title>Index</title>
 <meta charset = "utf-8">
 <meta name="viewport" content"width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -41,6 +42,7 @@
 <h1 class = "mb-4"> Blog Articles </h1>
 <a href = "/articles/new" class="btn btn-success"> New Article </a>
 <% articles.forEach(article => { %>
+
   <div class = "card mt-4">
     <div class ="card-body">
       <span class='text-primary'> #  <%=article.keyword_kor %></span>
