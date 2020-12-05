@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
 // searchQuery <<<
 function createSearchQuery(queries){ // 4
   var searchQuery = {};
-  if(queries.searchText && queries.searchText.length >= 3){
+  if(queries.searchText && queries.searchText.length >= 2){ // 검색 글자 수 몇개 이상인지
     var postQueries = [];
       postQueries.push({ body: { $regex: new RegExp(queries.searchText, 'i') } });
     if(postQueries.length > 0) searchQuery = {$or:postQueries};
