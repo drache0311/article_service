@@ -13,6 +13,7 @@ router.get('/:id', async(req, res) => {
   res.render('articles/show' , {article : article}) 
 })
 
+
 function saveArticleAndRedirect(path) {
   return async (req, res) => {
     let article = req.article
