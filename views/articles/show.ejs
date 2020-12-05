@@ -12,11 +12,15 @@
   <div class="container">
     <h1 class="mb-1"> <%= article.title_kor%></h1>
   </div>
+  <span class='text-info'> keyword : <%=article.keyword_kor %></span>
   <div class="text-muted mb-2">
-    <%= article.title %>
+    summary : <%= article.summary_kor %>
   </div>
   <div class="text-muted mb-2">
     <%= article.upload_day.toLocaleDateString() %>
+  </div>
+  <div class="text-muted mb-2">
+    <%= article.upload_day.plain_text %>
   </div>
   <a href ="/" class="btn btn-secondary"> All Articles</a>
 

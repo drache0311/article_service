@@ -17,8 +17,7 @@
   <!-- Search -->
   <form class="form-inline" action="/articles" method="get" class="post-index-tool"> 
        <!-- inline여야 간격이 없이 메뉴처럼 나온다-->
-      <input class="form-control mr-sm-2" type="text" valuename="searchText"  placeholder="Search" >
- 
+<input class="form-control mr-sm-2" type="text" name="Search"   placeholder="Search" >
       <!-- form-control 입력창 꾸며주는 클래스 -->
       <button class="btn btn-success"  type="submit">Search</button>
   </form>
@@ -44,13 +43,14 @@
 <% articles.forEach(article => { %>
   <div class = "card mt-4">
     <div class ="card-body">
+      <span class='text-primary'> #  <%=article.keyword_kor %></span>
+      <span class='text-info'>  <%=article.keyword%></span>
       <h1 class = "card-title"> <%= article.title_kor %> </h1>
-      <h5 class = "card-title"> <%= article.title %> </h5>
-
       <div class = "card-subtitle text-muted mb-2">
         <%= article.upload_day.toLocaleDateString() %>
       </div>
-      <div class ="card-text mb-2"> <%= article.href%> </div>
+      <div class ="card-text mb-2">   <%= article.summary_kor%>   </div>
+      <div class ="card-text mb-2">  <span class= "text-muted"><%= article.summary%>  </span></div>
       <a href="articles/<%= article.id%>" class="btn btn-primary">자세히보기</a>
       <a href= article.href class="btn btn-success">원문보기</a>
 
